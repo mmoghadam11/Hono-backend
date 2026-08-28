@@ -10,7 +10,7 @@
 			"database_id": "3f40dd9b-5828-4709-a2ae-d7b14015e899",
 			"migrations_dir": "drizzle"
 		}
-	]
+	] 
 	// "compatibility_flags": [
 	//   "nodejs_compat"
 	// ],
