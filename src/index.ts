@@ -1,9 +1,14 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+import authRoutes from "./routes/auth";
+import type { AppEnv } from "./types/hono";
 
-const app = new Hono()
+const app = new Hono<{ Bindings: AppEnv }>();
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+app.use("*", cors({ origin: "http://localhost:3000", credentials: true }));
 
-export default app
+app.route("/auth", authRoutes);
+
+app.get("/health", (c) => c.json({ status: "ok" }));
+
+export default app;

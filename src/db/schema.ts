@@ -11,3 +11,11 @@ export const users = sqliteTable("users", {
   profileImageUrl: text("profile_image_url"),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
 });
+
+export const refreshTokens = sqliteTable("refresh_tokens", {
+  id: text("id").primaryKey(),
+  userId: text("user_id").notNull(),
+  token: text("token").notNull().unique(),
+  expiresAt: integer("expires_at", { mode: "timestamp" }).notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+});
